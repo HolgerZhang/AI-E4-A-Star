@@ -70,14 +70,14 @@ class Graph:
 
     def move(self):
         childern = []
-        directs = ((0, 1), (1, 0), (0, -1), (-1, 0))
-        for direct in directs:
-            new_x_position = [self.x_positon[0] + direct[0], self.x_positon[1] + direct[1]]
-            if self._graph[new_x_position[0]][new_x_position[1]] is None:
+        directions = ((0, 1), (1, 0), (0, -1), (-1, 0))
+        for direction in directions:
+            new_x_position = [self.x_positon[0] + direction[0], self.x_positon[1] + direction[1]]
+            if self._graph[new_x_position[0]][new_x_position[1]] is None:  # 达到边界
                 continue
             new_graph = self.clone()
             new_graph._graph[self.x_positon[0]][self.x_positon[1]], \
-            new_graph._graph[new_x_position[0]][new_x_position[1]] = \
+                new_graph._graph[new_x_position[0]][new_x_position[1]] = \
                 new_graph._graph[new_x_position[0]][new_x_position[1]], \
                 new_graph._graph[self.x_positon[0]][self.x_positon[1]]
             new_graph.x_positon = new_x_position
@@ -108,7 +108,7 @@ def a_star():
         for i, g in enumerate(history):
             print('Step', i)
             print(g)
-            print('-'*6)
+            print('-' * 6)
 
 
 if __name__ == '__main__':
